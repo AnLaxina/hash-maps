@@ -101,6 +101,10 @@ export default class HashMap {
         }
     }
 
+    length() {
+        return this.size;
+    }
+
 
 
     #ifExceededMaxInteger(hashCode) {
