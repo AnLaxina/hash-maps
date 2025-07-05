@@ -62,6 +62,25 @@ export default class HashMap {
         return null
     }
 
+    has(key) {
+        const hashCode = this.hash(key);
+        const bucketIndex = hashCode % this.capacity;
+        const bucket = this.buckets[bucketIndex];
+
+        if(bucket === undefined) {
+            return false;
+        }
+
+        for(const [storedKey, _] of bucket) {
+            if(key === storedKey) {
+                return true;
+            }
+        }
+
+        return false;
+        
+    }
+
 
     #ifExceededMaxInteger(hashCode) {
         if (hashCode > Number.MAX_SAFE_INTEGER) {
