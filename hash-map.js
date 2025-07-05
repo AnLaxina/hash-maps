@@ -53,8 +53,8 @@ export default class HashMap {
             return null;
         }
 
-        for(const [storedKey, storedValue] of bucket) {
-            if(key === storedKey) {
+        for (const [storedKey, storedValue] of bucket) {
+            if (key === storedKey) {
                 return storedValue;
             }
         }
@@ -67,19 +67,40 @@ export default class HashMap {
         const bucketIndex = hashCode % this.capacity;
         const bucket = this.buckets[bucketIndex];
 
-        if(bucket === undefined) {
+        if (bucket === undefined) {
             return false;
         }
 
-        for(const [storedKey, _] of bucket) {
-            if(key === storedKey) {
+        for (const [storedKey, _] of bucket) {
+            if (key === storedKey) {
                 return true;
             }
         }
 
         return false;
-        
+
     }
+
+    remove(key) {
+        if (!this.has(key)) {
+            return false;
+        }
+        else {
+            const hashCode = this.hash(key);
+            const bucketIndex = hashCode % this.capacity;
+            const bucket = this.buckets[bucketIndex];
+
+            for(let i = 0; i < bucket.length; i++) {
+                const [storedKey] = bucket[i]
+                if(storedKey === key) {
+                    bucket.splice(i, 1);
+                    this.size--;
+                    return true;
+                }
+            }
+        }
+    }
+
 
 
     #ifExceededMaxInteger(hashCode) {
@@ -89,6 +110,7 @@ export default class HashMap {
         }
         return false;
     }
+
 
     #getBucketValue(bucketIndex) {
         // Retrieve the first bucket found given a key, and the second element of that bucket to get the actual value
