@@ -59,7 +59,7 @@ export default class HashMap {
             }
         }
 
-        return null
+        return null;
     }
 
     has(key) {
@@ -108,6 +108,25 @@ export default class HashMap {
     clear() {
         this.buckets = new Array(this.capacity);
         this.size = 0;
+    }
+
+    keys() {
+        if(this.buckets.length === 0) {
+            return [null];
+        }
+        else {
+            const keys = []
+            for(const bucket of this.buckets) {
+                if(bucket !== undefined) {
+                    for (const [key, value] of bucket) {
+                        keys.push(key);
+                    }
+                }
+            }
+
+            return keys;
+        }
+        
     }
 
 

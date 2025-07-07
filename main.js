@@ -10,6 +10,4 @@ hashMap.set("chicken", "nugget");
 hashMap.set("cow", "sauce");
 hashMap.set("dog", "sauce");
 
-console.log(`length() with all: ${hashMap.length()}`);
-hashMap.clear();
-console.log(`length() with clear(): ${hashMap.length()}`);
+console.log(`The keys of the hashmap are: ${hashMap.keys()}`);
