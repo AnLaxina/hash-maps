@@ -129,6 +129,24 @@ export default class HashMap {
         
     }
 
+    values() {
+        if(this.buckets === 0) {
+            return null;
+        }
+        else {
+            const values = [];
+            for(const bucket of this.buckets) {
+                if(bucket !== undefined) {
+                    for (const [key, value] of bucket) {
+                        values.push(value);
+                    }
+                }
+            }
+
+            return values;
+        }
+    }
+
 
     #ifExceededMaxInteger(hashCode) {
         if (hashCode > Number.MAX_SAFE_INTEGER) {
