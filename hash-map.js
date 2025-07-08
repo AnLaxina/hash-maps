@@ -173,10 +173,4 @@ export default class HashMap {
         return false;
     }
 
-
-    #getBucketValue(bucketIndex) {
-        // Retrieve the first bucket found given a key, and the second element of that bucket to get the actual value
-        return this.buckets[bucketIndex][0][1];
-    }
-
 }
