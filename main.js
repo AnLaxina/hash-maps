@@ -10,4 +10,5 @@ hashMap.set("chicken", "nugget");
 hashMap.set("cow", "sauce");
 hashMap.set("dog", "sauce");
 
-console.log(`The values of the hashmap are: ${hashMap.values()}`);
+console.log(`The entries of the hashmap are:`, hashMap.entries());
+

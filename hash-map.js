@@ -130,7 +130,7 @@ export default class HashMap {
     }
 
     values() {
-        if(this.buckets === 0) {
+        if(this.buckets.length === 0) {
             return null;
         }
         else {
@@ -144,6 +144,23 @@ export default class HashMap {
             }
 
             return values;
+        }
+    }
+
+    entries() {
+        if(this.buckets.length === 0) {
+            return [null];
+        }
+        else {
+            const entries = [];
+            for(const bucket of this.buckets) {
+                if(bucket !== undefined) {
+                    for(const pair of bucket) {
+                        entries.push(pair);
+                    }
+                }
+            }
+            return entries;
         }
     }
 
